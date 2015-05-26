@@ -1,0 +1,70 @@
+buildscript {
+   repositories {
+    maven  {
+        url "http://repo1.maven.org/maven2"
+    }
+}
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+jar {
+    baseName = 'gs-spring-boot'
+    version =  '0.1.0'
+}
+
+repositories {
+    maven  {
+        url "http://repo1.maven.org/maven2"
+    }
+}
+
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+dependencies {
+    // tag::jetty[]
+    compile("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+    compile("org.springframework.boot:spring-boot-starter-jetty")
+    // end::jetty[]
+    // tag::actuator[]
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("org.projectlombok:lombok:1.16.4")
+    // end::actuator[]
+    testCompile("junit:junit")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("info.cukes:cucumber-junit:1.2.2")
+    testCompile("info.cukes:cucumber-spring:1.2.2")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
+
+sourceSets {
+    e2eTest {
+        java {
+            srcDir 'src/e2etest/java'
+        }
+        resources {
+            srcDir 'src/e2etest/resources'
+        }
+        compileClasspath += sourceSets.main.runtimeClasspath
+        compileClasspath += sourceSets.test.compileClasspath
+    }
+}
+
+task e2eTest(type: Test) {
+    description = "Runs End to End Tests"
+    testClassesDir = sourceSets.e2eTest.output.classesDir
+    classpath += sourceSets.e2eTest.runtimeClasspath
+}
