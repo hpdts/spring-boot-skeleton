@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b8d7043-a941-4fa9-9b07-49e10425951d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/e2etest/java/com/hpdts/config/BaseIntegration.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/e2etest/java/com/hpdts/RunEndToEndTests.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/e2etest/resources/com.hpdts.hello/hello.feature" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/springboot.iws" afterPath="$PROJECT_DIR$/springboot.iws" />
     </list>
     <ignored path="springboot.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -111,7 +109,7 @@
       <file leaf-file-name="BaseIntegration.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/e2etest/java/com/hpdts/config/BaseIntegration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8575342" vertical-offset="112" max-vertical-offset="833">
+            <state vertical-scroll-proportion="0.019178081" vertical-offset="418" max-vertical-offset="833">
               <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -1346,12 +1344,12 @@
       <workItem from="1430531312984" duration="526000" />
       <workItem from="1431909873912" duration="2942000" />
       <workItem from="1431913191801" duration="1198000" />
-      <workItem from="1432642902456" duration="2427000" />
+      <workItem from="1432642902456" duration="2517000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9138000" />
+    <option name="totallyTimeSpent" value="9228000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
@@ -1668,7 +1666,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/e2etest/java/com/hpdts/config/BaseIntegration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8575342" vertical-offset="112" max-vertical-offset="833">
+        <state vertical-scroll-proportion="0.019178081" vertical-offset="418" max-vertical-offset="833">
           <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
