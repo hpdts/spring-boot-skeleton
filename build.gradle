@@ -38,7 +38,8 @@ dependencies {
     // end::jetty[]
     // tag::actuator[]
     compile("org.springframework.boot:spring-boot-starter-actuator")
-    compile("org.projectlombok:lombok:1.16.4")
+    //compile("org.projectlombok:lombok:1.16.4")
+    //compile("org.springframework.boot:lombok:1.16.4")
     // end::actuator[]
     testCompile("junit:junit")
     testCompile("org.springframework.boot:spring-boot-starter-test")

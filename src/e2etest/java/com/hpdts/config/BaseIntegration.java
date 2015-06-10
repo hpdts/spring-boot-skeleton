@@ -1,40 +1,18 @@
 package com.hpdts.config;
 
 
-import com.hpdts.hello.Application;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.IntegrationTest;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.boot.test.TestRestTemplate;
-import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.web.client.RestTemplate;
+import java.util.HashMap;
+import java.util.Map;
 
-import static org.hamcrest.core.Is.is;
-import static org.springframework.test.util.MatcherAssertionErrors.assertThat;
-
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
-@WebAppConfiguration
+/*@RunWith(SpringJUnit4ClassRunner.class)
 @IntegrationTest
-public class BaseIntegration {
+@SpringApplicationConfiguration(classes = Application.class)
+@WebAppConfiguration*/
+public abstract class BaseIntegration {
 
-    private String base;
-    protected RestTemplate template;
+   // protected String base = "http://localhost:8080";
+   // protected RestTemplate template = new TestRestTemplate();
+    protected Map<String, Object> dataContext = new HashMap<String, Object>();
 
-    @Before
-    public void setUp() throws Exception {
-        this.base = "http://localhost:8080";
-        template = new TestRestTemplate();
-    }
-
-    @Test
-    public void testRequest() throws Exception {
-        ResponseEntity<String> response = template.getForEntity(base, String.class);
-        assertThat(response.getBody(), is("Greetings from Spring Boot!"));
-    }
 
 }

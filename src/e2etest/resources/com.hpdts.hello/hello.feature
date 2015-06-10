@@ -1,4 +1,4 @@
-Feature: Hello
+Feature: Hello - Health Check
 
   Scenario: It should get a greeting message from Hello controller
     Given my application is running
