@@ -20,7 +20,7 @@
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,16 +29,6 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-        <script type="text/javascript">
-    function ContactController($scope) {
-        $scope.contacts = ["hi@email.com", "hello@email.com"];
- 
-        $scope.add = function() {
-        $scope.contacts.push($scope.newcontact);
-        $scope.newcontact = "";
-        }
-    }
-</script>
 
 </head>
 
@@ -170,17 +160,15 @@
 
 
                         </div>
+                        
+<div ng-controller="MyController">
+    Hello {{greetMe}}!
 
-                        <div ng-controller="ContactController">
-                             Email:<input type="text" ng-model="newcontact"/>
-                            <button ng-click="add()">Add</button>
-                            <h2>Contacts</h2>
-                         
-                            <ul>
-                                <li ng-repeat="contact in contacts"> {{ contact }} </li>
-                            </ul>
-                         
-                        </div>
+    <ul>
+        <li ng-repeat="contact in contacts"> {{ contact }} </li>
+    </ul>
+  </div>
+
 
                     </div>
                 <!-- /.row -->
@@ -193,6 +181,21 @@
 
     </div>
     <!-- /#wrapper -->
+
+
+  <script src="http://code.angularjs.org/snapshot/angular.js"></script>
+
+  <script>
+    angular.module('myApp', [])
+      .controller('MyController', ['$scope', function ($scope) {
+        $scope.greetMe = 'World';
+      }]);
+
+    angular.element(document).ready(function() {
+      angular.bootstrap(document, ['myApp']);
+    });
+
+  </script>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
