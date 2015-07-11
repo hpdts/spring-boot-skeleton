@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="gemStore">
 
 <head>
 
@@ -20,7 +20,9 @@
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    
+    <script src="http://code.angularjs.org/snapshot/angular.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -101,75 +103,23 @@
 
                 <div class="row">
                     <div class="col-lg-6">
-                        <h2>Basic Table</h2>
-                        <div class="table-responsive">
+                        <h2>Gems</h2>
+                        <div class="table-responsive" ng-controller="StoreController as store">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Page</th>
-                                        <th>Visits</th>
-                                        <th>% New Visits</th>
-                                        <th>Revenue</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>/index.html</td>
-                                        <td>1265</td>
-                                        <td>32.3%</td>
-                                        <td>$321.33</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/about.html</td>
-                                        <td>261</td>
-                                        <td>33.3%</td>
-                                        <td>$234.12</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/sales.html</td>
-                                        <td>665</td>
-                                        <td>21.3%</td>
-                                        <td>$16.34</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/blog.html</td>
-                                        <td>9516</td>
-                                        <td>89.3%</td>
-                                        <td>$1644.43</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/404.html</td>
-                                        <td>23</td>
-                                        <td>34.3%</td>
-                                        <td>$23.52</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/services.html</td>
-                                        <td>421</td>
-                                        <td>60.3%</td>
-                                        <td>$724.32</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/blog/post.html</td>
-                                        <td>1233</td>
-                                        <td>93.2%</td>
-                                        <td>$126.34</td>
+                                    <tr ng-repeat="product in store.products">
+                                        <td>{{ product.name }}</td>
+                                        <td><em class="pull-right">{{ product.price }}</em></td>
                                     </tr>
                                 </tbody>
                             </table>
-
-
                         </div>
-                        
-<div ng-controller="MyController">
-    Hello {{greetMe}}!
-
-    <ul>
-        <li ng-repeat="contact in contacts"> {{ contact }} </li>
-    </ul>
-  </div>
-
-
                     </div>
                 <!-- /.row -->
 
@@ -183,19 +133,6 @@
     <!-- /#wrapper -->
 
 
-  <script src="http://code.angularjs.org/snapshot/angular.js"></script>
-
-  <script>
-    angular.module('myApp', [])
-      .controller('MyController', ['$scope', function ($scope) {
-        $scope.greetMe = 'World';
-      }]);
-
-    angular.element(document).ready(function() {
-      angular.bootstrap(document, ['myApp']);
-    });
-
-  </script>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
