@@ -30,17 +30,14 @@ sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
 dependencies {
-    // tag::jetty[]
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"
     }
     compile("org.springframework.boot:spring-boot-starter-jetty")
-    // end::jetty[]
-    // tag::actuator[]
     compile("org.springframework.boot:spring-boot-starter-actuator")
-    //compile("org.projectlombok:lombok:1.16.4")
-    //compile("org.springframework.boot:lombok:1.16.4")
-    // end::actuator[]
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+
+    compile("org.projectlombok:lombok:1.16.4")
     testCompile("junit:junit")
     testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile("info.cukes:cucumber-junit:1.2.2")
