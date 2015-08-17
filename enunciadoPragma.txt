@@ -1,0 +1,38 @@
+Dado un prototipo html, consistente en 2 páginas ("index.jsp" y "bancos.jsp") y algunos otros archivos (imágenes y css), se solicita programar un sitio web utilizando en su desarrollo el lenguaje Java. 
+
+Para ello, se deben realizar los siguientes pasos:
+
+1.- Se debe generar el modelo de datos asociado (utilizar cualquier BD de preferencia) compuesta por una tabla de nombre "PRG_BANCO" que contenga 2 campos:
+ i) c_banco: Identificador, el cual permite almacenar texto de largo hasta 5 caracteres
+ii) a_banco: Descripción, el cual permite almacenar texto de largo hasta 150 caracteres
+
+2.- En la tabla antes creada, se deben cargar los datos que se encuentran en el archivo "datosBancos.csv"
+
+3.- Se debe programar la página "bancos.jsp" de manera de llenar la tabla que aparece en dicha página, con la información que se obtiene del modelo de datos cargado.
+
+4.- Crear campo de búsqueda que permita mostrar un resultado filtrado por medio de AJAX utilizando expresiones de búsqueda sobre el nombre del banco
+
+NOTA: Es requisito el uso de patrones de diseños (indicar que patrones se utilizaron y por qué)
+
+EXTRAS: Se considerarán puntos extras el agregar al desarrollo las siguientes características:
+
+1.- Uso de herramientas que permitan almacenar log (log4j), y manejo de excepciones
+2.- Crear un servicio web (WebService) que permita obtener la información de los bancos a partir del modelo, y modificar la página web para consumir dicho servicio
+3.- Paginación de la tabla resultado
+4.- Ordenamiento de la tabla resultado
+
+La entrega consistirá en:
+1.- Sitio web desarrollado
+2.- Documento o archivo de texto que explique como afrontó el problema y el porqué de sus decisiones en el desarrollo
+3.- Cualquier otro que se considere necesario
+
+NOTAS:
+1- Si bien se permite el uso de librerías externas, se restringe su uso solo a aquellas NO COMERCIALES (incluso aquellas con versión de evaluación NO DEBEN ser utilizadas). En caso de utilizar alguna propia, se debe adjuntar el código fuente.
+
+2.- Un deseable es que se privilegien los siguientes frameworks en el desarrollo de la solución:
+  - Struts 2
+  - Spring
+  - DWR
+  - CXF/Axis
+  - Ibatis/Hibernate
+  - JQuery
