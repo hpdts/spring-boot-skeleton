@@ -1,6 +1,7 @@
 .gradle
 build
-springboot.iml
-springboot.ipr
-springboot.iws
+spring-boot-skeleton.iml
+spring-boot-skeleton.ipr
+spring-boot-skeleton.iws
 target
+gradle
