@@ -1,6 +1,6 @@
 Feature: CRUD operations for bank
 
-  Scenario: Get All the banks
+  Scenario: Get All banks
     Given I have the following banks
       | id    | description         |
       | 0001  | Banco De Chile      |
