@@ -1,10 +1,9 @@
 package com.hpdts.hello.repository;
 
 import com.hpdts.hello.domain.Bank;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface BankRepository extends MongoRepository<Bank, String> {
+public interface BankRepository extends PagingAndSortingRepository<Bank, String> {
 
 
 }

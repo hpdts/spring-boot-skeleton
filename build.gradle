@@ -48,21 +48,3 @@ task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
 }
 
-sourceSets {
-    e2eTest {
-        java {
-            srcDir 'src/e2etest/java'
-        }
-        resources {
-            srcDir 'src/e2etest/resources'
-        }
-        compileClasspath += sourceSets.main.runtimeClasspath
-        compileClasspath += sourceSets.test.compileClasspath
-    }
-}
-
-task e2eTest(type: Test) {
-    description = "Runs End to End Tests"
-    testClassesDir = sourceSets.e2eTest.output.classesDir
-    classpath += sourceSets.e2eTest.runtimeClasspath
-}

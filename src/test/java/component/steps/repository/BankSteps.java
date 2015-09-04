@@ -8,8 +8,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.hamcrest.core.Is.is;
 import static org.springframework.test.util.MatcherAssertionErrors.assertThat;
@@ -34,7 +33,8 @@ public class BankSteps extends BaseSteps {
 
     @When("^I get all the banks$")
     public void I_get_all_the_banks() throws Throwable {
-        List<Bank> banks = bankrepository.findAll();
+        List<Bank> banks = new ArrayList<Bank>();
+        banks = createListFromIterable(banks, bankrepository.findAll());
         dataContext.put("banks", banks);
     }
 
@@ -42,5 +42,12 @@ public class BankSteps extends BaseSteps {
     public void I_should_have_banks(int numberOfBanks) throws Throwable {
         List<Bank> banks = (List) dataContext.get("banks");
         assertThat(banks.size(), is(numberOfBanks));
+    }
+
+    public static List<Bank> createListFromIterable(List<Bank> banks, Iterable<Bank> iterator) {
+        for (Bank bank : iterator) {
+            banks.add(bank);
+        }
+        return banks;
     }
 }
