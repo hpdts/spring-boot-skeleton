@@ -48,7 +48,6 @@ Feature: CRUD operations for bank
     And one bank should be 0009
     And one bank should not be 0010
 
-
   Scenario: Search Bank by name
     Given I have the following banks
       | id   | description         |
@@ -74,6 +73,6 @@ Feature: CRUD operations for bank
       | 0009 | Banco Internacional |
       | 0001 | Banco Internacional |
     When I get all the banks sorted by id
-    Then I should have 2 banks
+    Then I should have 3 banks
     And the first one is 0001
 

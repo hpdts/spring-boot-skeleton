@@ -2,14 +2,15 @@ package component.steps.repository;
 
 import com.hpdts.hello.domain.Bank;
 import com.hpdts.hello.repository.BankRepository;
+import com.hpdts.hello.repository.BankSearchRepository;
 import component.steps.config.BaseSteps;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.Map;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.TestCase.assertTrue;
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
 import static org.springframework.test.util.MatcherAssertionErrors.assertThat;
 
 
@@ -25,7 +27,14 @@ public class BankSteps extends BaseSteps {
 
     @Autowired
     private BankRepository bankrepository;
+    @Autowired
+    private BankSearchRepository bankSearch;
 
+
+    @Before
+    public void beforeAll() {
+        bankrepository.deleteAll();
+    }
 
     @Given("^I have the following banks$")
     public void I_have_the_following_banks(List<Map<String, String>> table) throws Throwable {
@@ -90,5 +99,29 @@ public class BankSteps extends BaseSteps {
             }
         }
         return false;
+    }
+
+    @When("^I search by bank with (\\w+)$")
+    public void I_search_bank_by_description(String description) throws Throwable {
+        List<Bank> banks = bankSearch.getBankByDescription(description);
+        dataContext.put("banks", banks);
+    }
+
+    @And("^I should have bank description as \\\"([^\\\"]*)\\\"$")
+    public void I_should_have_bank_description_as(String description) throws Throwable {
+        List<Bank> banks = (List) dataContext.get("banks");
+        assertThat(banks.get(0).getDescription(), is(description));
+    }
+
+    @When("^I get all the banks sorted by id$")
+    public void I_get_all_the_banks_sorted_by_id() throws Throwable {
+        List<Bank> banks = bankSearch.getBankBySortedByID();
+        dataContext.put("banks", banks);
+    }
+
+    @And("^the first one is (\\w+)$")
+    public void the_first_one_is(String id) throws Throwable {
+        List<Bank> banks = (List) dataContext.get("banks");
+        assertThat(banks.get(0).getId(), is(id));
     }
 }
