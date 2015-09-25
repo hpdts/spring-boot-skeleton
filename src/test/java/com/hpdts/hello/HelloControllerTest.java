@@ -1,6 +1,7 @@
 package com.hpdts.hello;
 
 
+import com.hpdts.hello.endpoint.HelloController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

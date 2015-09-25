@@ -3,6 +3,7 @@ package component.steps.repository;
 import com.hpdts.hello.domain.Bank;
 import com.hpdts.hello.repository.BankRepository;
 import com.hpdts.hello.repository.BankSearchRepository;
+import com.hpdts.hello.utils.Util;
 import component.steps.config.BaseSteps;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
@@ -19,7 +20,6 @@ import java.util.Map;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.TestCase.assertTrue;
 import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsEqual.equalTo;
 import static org.springframework.test.util.MatcherAssertionErrors.assertThat;
 
 
@@ -50,7 +50,7 @@ public class BankSteps extends BaseSteps {
     @When("^I get all the banks$")
     public void I_get_all_the_banks() throws Throwable {
         List<Bank> banks = new ArrayList<Bank>();
-        banks = createListFromIterable(banks, bankrepository.findAll());
+        banks = Util.createListFromIterable(banks, bankrepository.findAll());
         dataContext.put("banks", banks);
     }
 
@@ -60,12 +60,7 @@ public class BankSteps extends BaseSteps {
         assertThat(banks.size(), is(numberOfBanks));
     }
 
-    public static List<Bank> createListFromIterable(List<Bank> banks, Iterable<Bank> iterator) {
-        for (Bank bank : iterator) {
-            banks.add(bank);
-        }
-        return banks;
-    }
+
 
     @And("^page size is (\\d+)$")
     public void page_size_is(int pageSize) throws Throwable {
@@ -76,7 +71,7 @@ public class BankSteps extends BaseSteps {
     public void I_get_bank_page_number(int pageNumber) throws Throwable {
         List<Bank> banks = new ArrayList<Bank>();
         Integer pageSize = (Integer) dataContext.get("pageSize");
-        banks = createListFromIterable(banks, bankrepository.findAll(new PageRequest(pageNumber, pageSize)));
+        banks = Util.createListFromIterable(banks, bankrepository.findAll(new PageRequest(pageNumber, pageSize)));
         dataContext.put("banks", banks);
     }
 

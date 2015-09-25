@@ -1,4 +1,4 @@
-package com.hpdts.hello;
+package com.hpdts.hello.endpoint;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
