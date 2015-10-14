@@ -3,7 +3,7 @@ package com.hpdts.hello.service;
 
 import com.hpdts.hello.Application;
 import com.hpdts.hello.domain.Bank;
-import com.hpdts.hello.repository.BankRepository;
+import com.hpdts.hello.setup.SetupMongoTest;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,23 +20,15 @@ import static org.junit.Assert.assertThat;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
-public class BankServiceTest {
+public class BankServiceTest extends SetupMongoTest {
 
    @Autowired
    private BankService bankService;
 
-   @Autowired
-   private BankRepository bankRepository;
 
    @Before
    public void setUp() throws Exception {
-       bankRepository.deleteAll();
-       Bank bank = new Bank();
-       bank.setId("0001").setDescription("Banco Test");
-       bankRepository.save(bank);
-       bank = new Bank();
-       bank.setId("0002").setDescription("Banco Penta");
-       bankRepository.save(bank);
+       bankRepositoryInitialLoad();
    }
 
 

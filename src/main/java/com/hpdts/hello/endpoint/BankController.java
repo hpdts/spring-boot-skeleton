@@ -1,25 +1,22 @@
 package com.hpdts.hello.endpoint;
 
 import com.hpdts.hello.domain.Bank;
-import com.hpdts.hello.repository.BankRepository;
-import com.hpdts.hello.utils.Util;
+import com.hpdts.hello.service.BankService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class BankController {
 
     @Autowired
-    private BankRepository bankrepository;
+    private BankService bankService;
 
-    @RequestMapping("/banks, method = RequestMethod.GET")
+
+    @RequestMapping("/banks")
     public List<Bank> getAllBanks() {
-        //call service
-        List<Bank> banks = new ArrayList<Bank>();
-        return Util.createListFromIterable(banks, bankrepository.findAll());
+        return bankService.getAllBanks();
     }
 }
