@@ -1,10 +1,10 @@
-package component.steps.repository;
+package com.hpdts.hello.steps.repository;
 
 import com.hpdts.hello.domain.Bank;
 import com.hpdts.hello.repository.BankRepository;
 import com.hpdts.hello.repository.BankSearchRepository;
 import com.hpdts.hello.utils.Util;
-import component.steps.config.BaseSteps;
+import com.hpdts.hello.steps.config.BaseSteps;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;

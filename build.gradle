@@ -14,6 +14,12 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
 
+
+test {
+    exclude 'com/hpdts/hello/steps'
+}
+
+
 jar {
     baseName = 'gs-spring-boot'
     version =  '0.1.0'
@@ -30,6 +36,7 @@ configurations {
         extendsFrom testRuntime
     }
 }
+
 sourceSets.test.output.resourcesDir = sourceSets.test.output.classesDir
 
 task cucumber() {
@@ -38,10 +45,12 @@ task cucumber() {
         javaexec {
             main = "cucumber.api.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            args = ['--plugin', 'pretty', '--glue', 'gradle.cucumber', 'src/test/resources/component/features/*']
+            args = ['--plugin', 'pretty', '-f', 'html:build/reports/cucumber', '--glue','com.hpdts.hello.steps','src/test/resources']
         }
     }
 }
+
+build.dependsOn cucumber
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
@@ -53,10 +62,12 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-jetty")
     compile("org.springframework.boot:spring-boot-starter-actuator")
     compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+    compile("org.springframework.amqp:spring-rabbit:1.5.1.RELEASE")
 
     compile("org.projectlombok:lombok:1.16.4")
     testCompile("junit:junit")
     testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("info.cukes:cucumber-java:1.2.2")
     testCompile("info.cukes:cucumber-junit:1.2.2")
     testCompile("info.cukes:cucumber-spring:1.2.2")
 }
@@ -64,4 +75,6 @@ dependencies {
 task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
 }
+
+
 

@@ -1,4 +1,4 @@
-package component.steps.config;
+package com.hpdts.hello.steps.config;
 
 
 import com.hpdts.hello.Application;

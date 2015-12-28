@@ -4,19 +4,19 @@
     { name: 'Azurite1', price: 1.95 },
     { name: 'Azurite2', price: 5.95 }
 	];
-	
-  var app = angular.module('banks', []);
+
+  var app = angular.module('gemStore', []);
   
 
-   app.controller('BankController', function() {
+   app.controller('StoreController', function() {
         this.products = gem;
     });
 
-  app.controller('BankController',[ '$http', function($http){
+  app.controller('StoreController',[ '$http', function($http){
     var store = this;
     store.products = [];
 
-    $http.get('/banks').success(function(data){
+    $http.get('/products.json').success(function(data){
       store.products = data;
     });
     

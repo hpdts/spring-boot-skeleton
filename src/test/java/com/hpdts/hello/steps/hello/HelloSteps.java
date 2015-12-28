@@ -1,6 +1,6 @@
-package component.steps.hello;
+package com.hpdts.hello.steps.hello;
 
-import component.steps.config.BaseSteps;
+import com.hpdts.hello.steps.config.BaseSteps;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;

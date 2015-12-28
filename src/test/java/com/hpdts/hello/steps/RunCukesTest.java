@@ -1,4 +1,4 @@
-package component.steps;
+package com.hpdts.hello.steps;
 
 
 import cucumber.api.CucumberOptions;
