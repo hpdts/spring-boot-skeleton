@@ -5,3 +5,6 @@ build
 *.iws
 target
 gradle
+*.DS_Store
+out/
+

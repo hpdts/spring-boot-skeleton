@@ -15,6 +15,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import java.util.List;
 
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -37,6 +38,19 @@ public class BankServiceTest extends SetupMongoTest {
        List<Bank> banks = bankService.getAllBanks();
        assertThat(banks.size(), is(2));
        assertThat(banks.get(0).getId(),  is("0001"));
-       assertThat(banks.get(1).getId(),  is("0002"));
+       assertThat(banks.get(1).getId(), is("0002"));
    }
+
+    @Test
+    public void shouldSaveBanks(){
+        Bank bank = new Bank().setId("BLNY").setDescription("BANK LEUMI NY");
+
+        Bank bankSaved = bankService.saveBank(bank);
+        assertNotNull(bankSaved);
+        assertThat(bankSaved.getId(), is("BLNY"));
+
+        List<Bank> banks = bankService.getAllBanks();
+        assertThat(banks.size(), is(3));
+        assertThat(banks.get(2).getId(),  is("BLNY"));
+    }
 }
