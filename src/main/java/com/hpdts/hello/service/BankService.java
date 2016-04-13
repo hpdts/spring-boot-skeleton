@@ -36,5 +36,12 @@ public class BankService {
         }
     }
 
+    public Bank getBankById(String id) {
+        return bankrepository.findOne(id);
+    }
 
+
+    public void removeBankById(String id) {
+        bankrepository.delete(id);
+    }
 }

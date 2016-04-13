@@ -5,10 +5,7 @@ import com.hpdts.hello.service.BankService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,6 +27,27 @@ public class BankController {
             return new ResponseEntity<Bank>(bankService.saveBank(bank), HttpStatus.OK);
         }catch(Exception exception){
             return new ResponseEntity<String>("An error occurred saving bank. Message: " + exception.getMessage() +
+                    ", cause: " + exception.getCause(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(value="/get-bank-by-id", method = RequestMethod.GET)
+    public ResponseEntity<?> getBankById(@RequestParam("id") String id) {
+        try {
+            return new ResponseEntity<Bank>(bankService.getBankById(id), HttpStatus.OK);
+        }catch(Exception exception){
+            return new ResponseEntity<String>("An error occurred getting bank by Id. Message: " + exception.getMessage() +
+                    ", cause: " + exception.getCause(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(value="/delete-bank", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteBank(@RequestParam("id") String id) {
+        try {
+            bankService.removeBankById(id);
+            return new ResponseEntity<String>("Bank id " + id + "removed successfully", HttpStatus.OK);
+        }catch(Exception exception){
+            return new ResponseEntity<String>("An error occurred getting bank by Id. Message: " + exception.getMessage() +
                     ", cause: " + exception.getCause(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
