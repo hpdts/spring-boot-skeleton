@@ -19,3 +19,7 @@ Spring data: http://docs.spring.io/spring-data/mongodb/docs/current/reference/ht
 Web Pages, static content:
 
 https://spring.io/blog/2013/12/19/serving-static-web-content-with-spring-boot
+
+#Pragma demo
+
+http://localhost:8080/pragma/index.html
