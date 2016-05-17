@@ -34,9 +34,10 @@ public class BankController {
         }
     }
 
-    @RequestMapping(value="/get-bank-by-id", method = RequestMethod.GET)
-    public ResponseEntity<?> getBankById(@RequestParam("id") String id) {
+    @RequestMapping(value="/banks/{id}", method = RequestMethod.GET)
+    public ResponseEntity<?> getBankById(@PathVariable("id") String id) {
         try {
+            log.info("Bank ID to retrieve: " + id );
             return new ResponseEntity<Bank>(bankService.getBankById(id), HttpStatus.OK);
         }catch(Exception exception){
             return new ResponseEntity<String>("An error occurred getting bank by Id. Message: " + exception.getMessage() +

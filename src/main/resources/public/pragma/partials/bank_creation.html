@@ -1,0 +1,11 @@
+<div ng-controller="bankController">
+    <br/>
+    <p>Insert a new Bank:</p>
+    <form>
+        <table width="100%" class="tablaBancos">
+            <tr><td>Codigo: </td><td><input type="text" ng-model="bank.id"/></td></tr>
+            <tr><td>Descripcion: </td><td><input type="text" ng-model="bank.description"/></td></tr>
+            <tr><td colspan="2" align="center"><input type="button" value="Add a new Bank" ng-click="insertbank(bank)"></td></tr>
+        </table>
+    </form>
+</div>

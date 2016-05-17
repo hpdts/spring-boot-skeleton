@@ -9,7 +9,6 @@
 
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/bankController.js"></script>
-    <script type="text/javascript" src="js/insertBankController.js"></script>
 
 </head>
 
@@ -40,45 +39,35 @@
   </tr>
   <tr>
     <td class="contenido">
-		<table class="tablaInterior">
-		  <tr>
-		    <td width="535">
-                <div ng-controller="bankController">
-                    <table width="100%" class="tablaBancos">
-                        <tr class="tablaBancosEncab">
-                            <td>C&oacute;digo</td>
-                            <td>Descripci&oacute;n</td>
-                            <td>Delete</td>
-                        </tr>
-
-                            <tr ng-repeat="bank in banks">
-                                <td>{{ bank.id }}</td>
-                                <td><em class="pull-right">{{ bank.description }}</em></td>
-                                <td align="center"><button ng-click="deletebank(bank)">X</button></td>
+      <div ng-controller="bankController">
+            <table class="tablaInterior">
+              <tr>
+                <td width="535">
+                        <table width="100%" class="tablaBancos">
+                            <tr class="tablaBancosEncab">
+                                <td>C&oacute;digo</td>
+                                <td>Descripci&oacute;n</td>
+                                <td>Operations</td>
                             </tr>
-                    </table>
-                </div>
-			</td>
-           </tr>
-            <tr>
-              <td width="535">
-                  <div ng-controller="bankController">
-                      <br/>
-                      <p>Insert a new Bank:</p>
-                          <form>
-                              <table width="100%" class="tablaBancos">
-                                <tr><td>Codigo: </td><td><input type="text" ng-model="bank.id"/></td></tr>
-                                <tr><td>Descripcion: </td><td><input type="text" ng-model="bank.description"/></td></tr>
-                                <tr><td colspan="2" align="center"><input type="button" value="Add a new Bank" ng-click="insertbank(bank)"></td></tr>
-                              </table>
-                          </form>
-                  </div>
-              </td>
-		    </tr>
-		  <tr>
-		    <td colspan="2" align="right"><img src="imgs/botMenuPpal.gif" width="197" height="62" border="0" onClick="location.href='_index.html'" class="botonNaveg"></td>
-	      </tr>
-	  </table>
+
+                                <tr ng-repeat="bank in banks">
+                                    <td>{{ bank.id }}</td>
+                                    <td><em class="pull-right">{{ bank.description }}</em></td>
+                                    <td align="center"><button ng-click="editbank(bank)">Edit</button><button ng-click="deletebank(bank)">X</button></td>
+                                </tr>
+                        </table>
+                </td>
+               </tr>
+                <tr>
+                  <td width="535">
+                      <ng-include src="showBankDetails()"></ng-include>
+                  </td>
+                </tr>
+              <tr>
+                <td colspan="2" align="right"><img src="imgs/botMenuPpal.gif" width="197" height="62" border="0" onClick="location.href='_index.html'" class="botonNaveg"></td>
+              </tr>
+          </table>
+      </div>
 	</td>
   </tr>
   <tr>

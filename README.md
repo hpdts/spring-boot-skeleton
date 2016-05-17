@@ -11,7 +11,7 @@ http://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-test
 
 https://spring.io/guides/gs/spring-boot/
 
-Run the app : gradlew build && java -jar build/libs/gs-spring-boot-0.1.0.jar
+Run the app : ./gradlew build && java -jar build/libs/gs-spring-boot-0.1.0.jar
 
 Spring data: http://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#mongo.query
 

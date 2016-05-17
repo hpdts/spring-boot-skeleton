@@ -1,9 +1,14 @@
-app.controller("bankController", function($scope, $http) {
+app.controller("bankController", function($scope, $http, $location) {
     $http.get('http://localhost:8080/banks').
         success(function(data) {
             console.log("data" + JSON.stringify(data));
             $scope.banks = data;
+
         });
+
+    $scope.showBankDetails = function() {
+        return "partials/bank_creation.html";
+    }
 
     $scope.insertbank = function(bank){
         console.log("Bank to Save: " + bank.id + "," + bank.description);
@@ -28,4 +33,21 @@ app.controller("bankController", function($scope, $http) {
             });
         }
     };
+
+    $scope.editbank = function(bank) {
+        console.log(bank);
+        $scope.showBankDetails = function() {
+            return "partials/bank_detail.html";
+        }
+
+        $http.get('http://localhost:8080/banks/' + bank.id).
+            success(function(data) {
+                console.log("data" + JSON.stringify(data));
+                $scope.bank = data;
+
+            });
+        //$location.path('/bank-detail/' + bank.id);
+    };
+
+
 });
